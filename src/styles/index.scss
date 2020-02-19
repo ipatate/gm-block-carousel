@@ -1,13 +1,6 @@
-// @import '../../../../assets/css/default/fonts';
-// @import "../../../../assets/css/blocks/carousel";
-
-div[data-type*="gm/"] {
-    margin-left: -45px;
-    max-width: 100vw;
-    margin-right: -45px;
-}
-
 .gm-carousel-container {
+    width: 100%;
+    max-width: 100%;
     min-height: 300px;
     height: auto;
 

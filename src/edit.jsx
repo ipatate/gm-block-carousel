@@ -24,15 +24,19 @@ const Edit = props => {
   };
 
   // re init carousel with new element
-  const initCarousel = (remove = false) => {
+  const initCarousel = (remove = false, index = 0) => {
     if (carousel.current) {
       setTimeout(() => {
+        // total items
         const length = container.current.childNodes.length;
+        // init new carousel
         carousel.current = new Siema({
           selector: container.current
         });
+
         if (length > 0) {
-          const _i = remove === true ? length - 1 : length;
+          // if remove, take index of bloc removed - 1 or take last
+          const _i = remove === true ? index - 1 : length;
           carousel.current.goTo(_i < 0 ? 1 : _i);
         }
       }, 100);
@@ -41,6 +45,7 @@ const Edit = props => {
 
   // init carousel on mount
   useEffect(() => {
+    // init first carousel
     carousel.current = new Siema({
       selector: container.current
     });
@@ -49,12 +54,19 @@ const Edit = props => {
   // remove image
   const onRemoveImage = i => {
     destroyCarousel(() => {
+      // delete bloc image
       const _blocs = { ...blocs };
       delete _blocs[i];
-      setAttributes({
-        blocs: _blocs
+      // reset keys
+      const newBlocs = {};
+      Object.keys(_blocs).forEach((e, i) => {
+        newBlocs[i] = _blocs[e];
       });
-      initCarousel(true);
+
+      setAttributes({
+        blocs: newBlocs
+      });
+      initCarousel(true, i);
     });
   };
 
