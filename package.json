@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "re-resizable": "^6.2.0",
-    "siema": "^1.5.1"
+    "siema": "^1.5.1",
+    "throttle-debounce": "^2.1.0"
   }
 }

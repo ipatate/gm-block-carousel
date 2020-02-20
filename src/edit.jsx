@@ -1,4 +1,5 @@
 import Siema from "siema";
+import { debounce } from "throttle-debounce";
 import { Resizable as ResizableBox } from "re-resizable";
 const { Button, Dashicon } = wp.components;
 const { __ } = wp.i18n;
@@ -109,6 +110,11 @@ const Edit = props => {
           onResizeStart={() => {
             toggleSelection(false);
           }}
+          onResize={debounce(50, (event, direction, elt, delta) => {
+            setAttributes({
+              height: parseInt(height + delta.height, 10)
+            });
+          })}
           onResizeStop={(event, direction, elt, delta) => {
             carousel.current.resizeHandler();
             setAttributes({
@@ -128,7 +134,12 @@ const Edit = props => {
               />
             ))}
           </div>
-          {isSelected && <div className="resizable-handle"></div>}
+          {isSelected && (
+            <div
+              style={{ top: `${height}px` }}
+              className="resizable-handle"
+            ></div>
+          )}
         </ResizableBox>
         <div className="gm-carousel-arrow-container">
           <button

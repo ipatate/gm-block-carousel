@@ -23,7 +23,7 @@
 }
 
 .gm-carousel-add-bloc {
-    padding: 40px 10px 10px 0;
+    padding: 20px 10px 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,3 +43,26 @@
     }
 }
 
+.resizable-handle {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 4px;
+    background: #eee;
+    margin-top: 2px;
+
+    &:hover {
+        background: #0085ba;
+    }
+
+    &::after {
+        content: '';
+        margin-top: -4px;
+        display: block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #0085ba;
+    }
+}
