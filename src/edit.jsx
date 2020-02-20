@@ -45,7 +45,9 @@ const Edit = props => {
         if (length > 0) {
           // if remove, take index of bloc removed - 1 or take last
           const _i = remove === true ? index - 1 : length;
-          carousel.current.goTo(_i < 0 ? 1 : _i);
+          const current = _i < 0 ? 0 : _i;
+          setSelected(current);
+          carousel.current.goTo(current);
         }
       }, 100);
     }
