@@ -7,8 +7,6 @@ import "../styles/index.scss";
 const EditElement = ({ props, index, onRemoveImage }) => {
   const { attributes, setAttributes } = props;
   const { blocs } = attributes;
-  console.log(blocs, index, blocs[index]);
-
   const { imageId, image } = blocs[index];
   return (
     <div className="gm-carousel-cell">

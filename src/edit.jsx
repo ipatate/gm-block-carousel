@@ -1,7 +1,7 @@
 import Siema from "siema";
 const { Button, Dashicon } = wp.components;
 const { __ } = wp.i18n;
-const { useEffect, useRef } = wp.element;
+const { useEffect, useState, useRef } = wp.element;
 import EditElement from "./components/editElement";
 import AddImage from "./components/addImage";
 
@@ -16,6 +16,7 @@ const model = {
 const Edit = props => {
   const { attributes, setAttributes } = props;
   const { blocs } = attributes;
+  const [selected, setSelected] = useState(0);
   // container carousel
   const container = useRef();
   // ref to carousel
@@ -35,7 +36,8 @@ const Edit = props => {
         const length = container.current.childNodes.length;
         // init new carousel
         carousel.current = new Siema({
-          selector: container.current
+          selector: container.current,
+          onChange: () => setSelected(carousel.current.currentSlide)
         });
 
         if (length > 0) {
@@ -51,7 +53,10 @@ const Edit = props => {
   useEffect(() => {
     // init first carousel
     carousel.current = new Siema({
-      selector: container.current
+      selector: container.current,
+      onChange: () => {
+        setSelected(carousel.current.currentSlide);
+      }
     });
   }, []);
 
@@ -76,15 +81,30 @@ const Edit = props => {
 
   return (
     <div className="gm-carousel-bloc-edit">
-      <div className="gm-carousel-container" ref={container}>
-        {Object.keys(blocs).map(b => (
-          <EditElement
-            onRemoveImage={onRemoveImage}
-            props={props}
-            key={`${blocs[b].imageId} ${b}`}
-            index={b}
-          />
-        ))}
+      <div className="gm-carousel-bloc-container">
+        <div className="gm-carousel-container" ref={container}>
+          {Object.keys(blocs).map(b => (
+            <EditElement
+              onRemoveImage={onRemoveImage}
+              props={props}
+              key={`${blocs[b].imageId} ${b}`}
+              index={b}
+            />
+          ))}
+        </div>
+        <div className="gm-carousel-dot-container">
+          {Object.keys(blocs).map(b => {
+            return (
+              <div
+                index={`dot-${b}`}
+                className={`gm-carousel-dot ${
+                  +selected === +b ? "gm-carousel-dot-current" : ""
+                }`}
+                onClick={() => carousel.current.goTo(b)}
+              ></div>
+            );
+          })}
+        </div>
       </div>
       <div className="gm-carousel-add-bloc">
         <AddImage

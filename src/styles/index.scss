@@ -54,3 +54,23 @@
         }
     }
 }
+
+.gm-carousel-dot-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gm-carousel-dot {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+
+.gm-carousel-dot-current {
+    background-color: #ccc;
+}
