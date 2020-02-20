@@ -1,7 +1,7 @@
 import "../styles/index.scss";
 
 const SaveImage = ({ props, index }) => {
-  const { blocs } = props.attributes;
+  const { blocs, height } = props.attributes;
   const { image } = blocs[index];
   if (!image) return <></>;
   const { media_details, alt_text, source_url } = image;
@@ -11,7 +11,11 @@ const SaveImage = ({ props, index }) => {
   const pic = large || full;
   return (
     <>
-      <img src={pic ? pic.source_url : source_url} alt={alt_text} />
+      <img
+        src={pic ? pic.source_url : source_url}
+        style={{ maxHeight: height }}
+        alt={alt_text}
+      />
     </>
   );
 };
