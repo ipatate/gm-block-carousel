@@ -1,4 +1,5 @@
 import Siema from "siema";
+import { Resizable as ResizableBox } from "re-resizable";
 const { Button, Dashicon } = wp.components;
 const { __ } = wp.i18n;
 const { useEffect, useState, useRef } = wp.element;
@@ -14,8 +15,8 @@ const model = {
 };
 
 const Edit = props => {
-  const { attributes, setAttributes } = props;
-  const { blocs } = attributes;
+  const { attributes, setAttributes, toggleSelection, isSelected } = props;
+  const { blocs, height } = attributes;
   const [selected, setSelected] = useState(0);
   // container carousel
   const container = useRef();
@@ -79,24 +80,72 @@ const Edit = props => {
     });
   };
 
+  const arrowHandler = (next = true) => {
+    const current = carousel.current.currentSlide;
+    carousel.current.goTo(next ? current + 1 : current - 1);
+  };
+
   return (
     <div className="gm-carousel-bloc-edit">
       <div className="gm-carousel-bloc-container">
-        <div className="gm-carousel-container" ref={container}>
-          {Object.keys(blocs).map(b => (
-            <EditElement
-              onRemoveImage={onRemoveImage}
-              props={props}
-              key={`${blocs[b].imageId} ${b}`}
-              index={b}
-            />
-          ))}
+        <ResizableBox
+          size={{
+            width: "100%",
+            height: height
+          }}
+          minWidth={"100%"}
+          maxWidth={"100%"}
+          minHeight={"100%"}
+          enable={{
+            top: false,
+            right: false,
+            bottom: true,
+            left: false,
+            topRight: false,
+            bottomRight: false,
+            bottomLeft: false,
+            topLeft: false
+          }}
+          onResizeStart={() => {
+            toggleSelection(false);
+          }}
+          onResizeStop={(event, direction, elt, delta) => {
+            carousel.current.resizeHandler();
+            setAttributes({
+              height: parseInt(height + delta.height, 10)
+            });
+            toggleSelection(true);
+          }}
+        >
+          <div className="gm-carousel-container" ref={container}>
+            {Object.keys(blocs).map(b => (
+              <EditElement
+                height={`${height}px`}
+                onRemoveImage={onRemoveImage}
+                props={props}
+                key={`${blocs[b].imageId} ${b}`}
+                index={b}
+              />
+            ))}
+          </div>
+          {isSelected && <div className="resizable-handle"></div>}
+        </ResizableBox>
+        <div className="gm-carousel-arrow-container">
+          <button
+            onClick={() => arrowHandler(false)}
+            className="gm-carousel-arrow-previous"
+          >
+            <span>{__("previous")}</span>
+          </button>
+          <button onClick={arrowHandler} className="gm-carousel-arrow-next">
+            <span>{__("next")}</span>
+          </button>
         </div>
         <div className="gm-carousel-dot-container">
           {Object.keys(blocs).map(b => {
             return (
               <div
-                index={`dot-${b}`}
+                key={`dot-${b}`}
                 className={`gm-carousel-dot ${
                   +selected === +b ? "gm-carousel-dot-current" : ""
                 }`}

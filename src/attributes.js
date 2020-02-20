@@ -4,6 +4,7 @@ export default {
     default: {}
   },
   height: {
-    type: Number
+    type: Number,
+    default: 400
   }
 };
