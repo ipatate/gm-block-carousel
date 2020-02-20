@@ -4,6 +4,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@svgr/webpack": "^5.1.0",
     "@wordpress/babel-preset-default": "^4.7.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^2.1.0",
     "autoprefixer": "^9.7.3",
@@ -34,7 +35,7 @@
     "plugins": []
   },
   "dependencies": {
-    "re-resizable": "^6.1.1",
+    "re-resizable": "^6.2.0",
     "siema": "^1.5.1"
   }
 }

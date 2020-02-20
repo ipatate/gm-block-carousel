@@ -1,11 +1,13 @@
+import Siema from "siema";
 const { Button, Dashicon } = wp.components;
 const { __ } = wp.i18n;
 const { useEffect, useRef } = wp.element;
 import EditElement from "./components/editElement";
-import Siema from "siema";
-import "./styles/index.scss";
 import AddImage from "./components/addImage";
 
+import "./styles/index.scss";
+
+// model for bloc
 const model = {
   image: undefined,
   imageId: undefined
@@ -14,12 +16,14 @@ const model = {
 const Edit = props => {
   const { attributes, setAttributes } = props;
   const { blocs } = attributes;
+  // container carousel
   const container = useRef();
   // ref to carousel
   let carousel = useRef();
 
   // destroy carousel on change element
   const destroyCarousel = (cb = () => true, resetDom = true) => {
+    // remove and reste dom
     if (carousel.current) carousel.current.destroy(resetDom, cb);
   };
 

@@ -22,6 +22,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
         }
       });
       const { getMedia } = select("core");
+      // get media for this new pic added
       return newPic ? getMedia(newPic.imageId) : {};
     },
     [blocs]
@@ -48,6 +49,10 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
     }
   }, [image]);
 
+  /**
+   * add new image
+   * @param {} image
+   */
   const onUpdateImage = image => {
     destroyCarousel(() => {
       setAttributes({
@@ -58,6 +63,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
               ...blocs[index],
               imageId: image.id,
               image,
+              // set to true for get media after
               newImage: true
             }
           }
