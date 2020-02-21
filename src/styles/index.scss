@@ -1,3 +1,6 @@
+.gm-carousel-bloc-container {
+    position: relative;
+}
 .gm-carousel-container {
     width: 100%;
     max-width: 100%;
@@ -51,8 +54,13 @@
 
 .gm-carousel-arrow-container {
     display: flex;
-    justify-content: flex-end;
-    margin-top: -55px;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
 
     @media (max-width: 600px) {
         display:none;
@@ -74,11 +82,12 @@
         transition: color .15s;
         text-decoration: none;
         cursor: pointer;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         padding: 0;
         background-color: #fff;
-        border: 2px solid #ccc;
+        // border: 2px solid #ccc;
+        // box-shadow: 1px 1px 7px 2px #5d5b5b;
         z-index: 10;
 
         &:hover {
@@ -97,25 +106,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: url('./arrow-left.svg') no-repeat;
-            transform: rotate(180deg);
+            width: 30px;
+            height: 25px;
+            background: url('./previous.svg') no-repeat;
+            background-size: contain;
             position: relative;
-            top: -4px;
         }
     }
 
     .gm-carousel-arrow-next {
-        margin: 0 5px 0 7px;
         &::after {
             content: '';
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: url('./arrow-left.svg') no-repeat;
+            width: 30px;
+            height: 25px;
+            background: url('./next.svg') no-repeat;
+            background-size: contain;
         }
     }
 }
