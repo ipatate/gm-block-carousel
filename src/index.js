@@ -22,8 +22,8 @@ const icone = () => (
 );
 
 registerBlockType("gm/carousel", {
-  title: "Block carousel",
-  description: "carousel for show photos",
+  title: __("Block carousel", "gm-carousel"),
+  description: __("carousel for show photos", "gm-carousel"),
   icon: icone,
   category: "theme-blocks",
   attributes,

@@ -6,6 +6,7 @@ const { __ } = wp.i18n;
 const { useEffect, useState, useRef } = wp.element;
 import EditElement from "./components/editElement";
 import AddImage from "./components/addImage";
+import Panel from "./components/panel";
 
 import "./styles/index.scss";
 
@@ -17,7 +18,7 @@ const model = {
 
 const Edit = props => {
   const { attributes, setAttributes, toggleSelection, isSelected } = props;
-  const { blocs, height } = attributes;
+  const { blocs, height, showDot, showArrow } = attributes;
   const [selected, setSelected] = useState(0);
   // container carousel
   const container = useRef();
@@ -87,9 +88,10 @@ const Edit = props => {
     const current = carousel.current.currentSlide;
     carousel.current.goTo(next ? current + 1 : current - 1);
   };
-
+  const blockKeys = Object.keys(blocs);
   return (
     <div className="gm-carousel-bloc-edit">
+      <Panel props={props} />
       <div className="gm-carousel-bloc-container">
         <ResizableBox
           size={{
@@ -126,7 +128,7 @@ const Edit = props => {
           }}
         >
           <div className="gm-carousel-container" ref={container}>
-            {Object.keys(blocs).map(b => (
+            {blockKeys.map(b => (
               <EditElement
                 height={`${height}px`}
                 onRemoveImage={onRemoveImage}
@@ -143,30 +145,34 @@ const Edit = props => {
             ></div>
           )}
         </ResizableBox>
-        <div className="gm-carousel-arrow-container">
-          <button
-            onClick={() => arrowHandler(false)}
-            className="gm-carousel-arrow-previous"
-          >
-            <span>{__("previous")}</span>
-          </button>
-          <button onClick={arrowHandler} className="gm-carousel-arrow-next">
-            <span>{__("next")}</span>
-          </button>
-        </div>
-        <div className="gm-carousel-dot-container">
-          {Object.keys(blocs).map(b => {
-            return (
-              <div
-                key={`dot-${b}`}
-                className={`gm-carousel-dot ${
-                  +selected === +b ? "gm-carousel-dot-current" : ""
-                }`}
-                onClick={() => carousel.current.goTo(b)}
-              ></div>
-            );
-          })}
-        </div>
+        {showArrow === true && blockKeys.length > 1 ? (
+          <div className="gm-carousel-arrow-container">
+            <button
+              onClick={() => arrowHandler(false)}
+              className="gm-carousel-arrow-previous"
+            >
+              <span>{__("previous", "gm-carousel")}</span>
+            </button>
+            <button onClick={arrowHandler} className="gm-carousel-arrow-next">
+              <span>{__("next", "gm-carousel")}</span>
+            </button>
+          </div>
+        ) : null}
+        {showDot === true && blockKeys.length > 1 ? (
+          <div className="gm-carousel-dot-container">
+            {blockKeys.map(b => {
+              return (
+                <div
+                  key={`dot-${b}`}
+                  className={`gm-carousel-dot ${
+                    +selected === +b ? "gm-carousel-dot-current" : ""
+                  }`}
+                  onClick={() => carousel.current.goTo(b)}
+                ></div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
       <div className="gm-carousel-add-bloc">
         <AddImage

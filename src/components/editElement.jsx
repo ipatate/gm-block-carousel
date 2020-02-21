@@ -16,7 +16,7 @@ const EditElement = ({ props, index, height, onRemoveImage }) => {
           <img src={image.source_url} alt="" style={{ maxHeight: height }} />
           <Button
             onClick={() => onRemoveImage(index)}
-            title={__("remove", "gm-bloc")}
+            title={__("remove", "gm-carousel")}
           >
             <Dashicon icon="dismiss" />
           </Button>

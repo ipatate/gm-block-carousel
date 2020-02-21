@@ -5,6 +5,14 @@ export default {
   },
   height: {
     type: Number,
-    default: 400
+    default: 500
+  },
+  showDot: {
+    type: Boolean,
+    default: true
+  },
+  showArrow: {
+    type: Boolean,
+    default: true
   }
 };

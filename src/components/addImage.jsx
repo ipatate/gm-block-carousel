@@ -76,7 +76,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
     <>
       <MediaUploadCheck>
         <MediaUpload
-          title={__("Image", "")}
+          title={__("Image", "gm-carousel")}
           onSelect={onUpdateImage}
           allowedTypes={ALLOWED_MEDIA_TYPES}
           value={""}
@@ -84,10 +84,10 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
             return (
               <Button
                 onClick={open}
-                title={__("add image", "gm-bloc")}
+                title={__("add image", "gm-carousel")}
                 className="components-button editor-post-preview is-button is-default is-large"
               >
-                {__("add image", "gm-bloc")}
+                {__("add image", "gm-carousel")}
                 {"  "}
                 <Dashicon icon="plus-alt" />
               </Button>

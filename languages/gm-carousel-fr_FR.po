@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Block GM Carousel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-21 14:52+0000\n"
+"PO-Revision-Date: 2020-02-21 14:53+0000\n"
+"Last-Translator: admin <info@goodmotion.fr>\n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
+
+#: src/components/addImage.jsx:87 src/components/addImage.jsx:90
+msgid "add image"
+msgstr "Ajouter une image"
+
+#. Name of the plugin
+msgid "Block GM Carousel"
+msgstr ""
+
+#. Description of the plugin
+msgid "Display carousel image"
+msgstr "Affiche un carousel d'image"
+
+#. Author of the plugin
+msgid "Faramaz Pat <info@goodmotion.fr>"
+msgstr ""
+
+#: src/components/addImage.jsx:79
+msgid "Image"
+msgstr ""
+
+#: src/edit.jsx:156 src/save.jsx:21
+msgid "next"
+msgstr "Suivant"
+
+#: src/edit.jsx:153 src/save.jsx:18
+msgid "previous"
+msgstr "Précédent"
+
+#: src/components/editElement.jsx:19
+msgid "remove"
+msgstr "Supprimer"
+
+#: src/components/panel.jsx:10
+msgid "Settings"
+msgstr "Reglages"
+
+#: src/components/panel.jsx:17
+msgid "Show Arrow"
+msgstr "Afficher les flèches"
+
+#: src/components/panel.jsx:12
+msgid "Show Dot"
+msgstr "Afficher les dots"
