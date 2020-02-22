@@ -1,7 +1,6 @@
 # Block Gutenberg wordpress for display Carousel Image.
 
-Pur block gutenberg with webpack compilation.
-Example of project for the development gutenberg blocks
+Show carousel with dot and arrows.
 
 ## Scripts cmd
 
@@ -25,4 +24,8 @@ npm run build
 yarn build
 ```
 
-## Image example admin editor
+## Libraries used
+
+- Siema for carousel (https://pawelgrzybek.github.io/siema/)
+- re-resizable
+- throttle-debounce
