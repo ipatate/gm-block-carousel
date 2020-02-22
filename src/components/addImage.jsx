@@ -22,6 +22,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
         }
       });
       const { getMedia } = select("core");
+      // get media for this new pic added
       return newPic ? getMedia(newPic.imageId) : {};
     },
     [blocs]
@@ -48,6 +49,10 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
     }
   }, [image]);
 
+  /**
+   * add new image
+   * @param {} image
+   */
   const onUpdateImage = image => {
     destroyCarousel(() => {
       setAttributes({
@@ -58,6 +63,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
               ...blocs[index],
               imageId: image.id,
               image,
+              // set to true for get media after
               newImage: true
             }
           }
@@ -70,7 +76,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
     <>
       <MediaUploadCheck>
         <MediaUpload
-          title={__("Image", "")}
+          title={__("Image", "gm-carousel")}
           onSelect={onUpdateImage}
           allowedTypes={ALLOWED_MEDIA_TYPES}
           value={""}
@@ -78,10 +84,10 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
             return (
               <Button
                 onClick={open}
-                title={__("add image", "gm-bloc")}
+                title={__("add image", "gm-carousel")}
                 className="components-button editor-post-preview is-button is-default is-large"
               >
-                {__("add image", "gm-bloc")}
+                {__("add image", "gm-carousel")}
                 {"  "}
                 <Dashicon icon="plus-alt" />
               </Button>

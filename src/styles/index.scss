@@ -1,56 +1,124 @@
-// @import '../../../../assets/css/default/fonts';
-// @import "../../../../assets/css/blocks/carousel";
-
-div[data-type*="gm/"] {
-    margin-left: -45px;
-    max-width: 100vw;
-    margin-right: -45px;
+.gm-carousel-bloc-container {
+    position: relative;
 }
-
 .gm-carousel-container {
-    min-height: 300px;
-    height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+
+    > div {
+        max-height: 100%;
+        display: flex;
+        align-items: center;
+    }
 
     .gm-carousel-cell {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        span.components-spinner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        img{
+            width: auto;
+            height: auto;
+            max-height: 100%;
         }
     }
 }
 
-.gm-carousel-cell button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
 
-    svg {
-        width: 30px;
-        height: 30px;
-    }
+.gm-carousel-dot-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 20px 0 0 0;
 }
 
-.gm-carousel-add-bloc {
-    padding: 40px 10px 10px 0;
+.gm-carousel-dot {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+.gm-carousel-dot-current {
+    background-color: #ccc;
+}
+
+.gm-carousel-arrow-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-55%);
+
+    @media (max-width: 600px) {
+        display:none;
+    }
 
     button {
+        position: relative;
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-size: 18px;
-        padding: 5px 10px;
+        justify-content: center;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        line-height: 1.5;
+        border-radius: 50%;
+        transition: color .15s;
+        text-decoration: none;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        background-color: #fff;
+        z-index: 10;
 
-        svg {
-            width: 20px;
-            height: 20px;
-            margin-left: 5px;
+        &:hover {
+            text-decoration: none;
+        }
+
+        span {
+            position: absolute;
+            top: -30000px;
+        }
+
+    }
+    .gm-carousel-arrow-previous {
+        &::after {
+            content: '';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 25px;
+            background: url('./previous.svg') no-repeat;
+            background-size: contain;
+            position: relative;
+        }
+    }
+
+    .gm-carousel-arrow-next {
+        &::after {
+            content: '';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 25px;
+            background: url('./next.svg') no-repeat;
+            background-size: contain;
         }
     }
 }

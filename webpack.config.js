@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require("path");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -6,7 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const DependencyExtractionWebpackPlugin = require("@wordpress/dependency-extraction-webpack-plugin");
 
 // define if prod
-const debug = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== "production";
 
 // test for create 2 css files with mini css extract plugin
 const recursiveIssuer = m => {
@@ -19,12 +20,16 @@ const recursiveIssuer = m => {
   }
 };
 
-module.exports = {
+const config = {
   context: __dirname,
-  devtool: debug ? "inline-sourcemap" : false,
-  mode: debug ? "development" : "production",
+  devtool: dev ? "inline-sourcemap" : false,
+  mode: dev ? "development" : "production",
   resolve: {
     extensions: [".js", ".jsx", ".scss", ".css"]
+  },
+  output: {
+    // path: path.resolve(__dirname, "/dist"),
+    // publicPath: path.resolve(__dirname, "/dist")
   },
   entry: {
     main: "./src/index.js",
@@ -53,6 +58,13 @@ module.exports = {
           "css-loader",
           "postcss-loader",
           "sass-loader"
+        ]
+      },
+      {
+        test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
+        use: [
+          "url-loader", // or file-loader or svg-url-loader
+          "svg-transform-loader"
         ]
       }
     ]
@@ -105,3 +117,12 @@ module.exports = {
     new DependencyExtractionWebpackPlugin()
   ]
 };
+
+// if (dev) {
+//   config.devServer = {
+//     // contentBase: path.join(__dirname, "dist"),
+//     hot: true
+//   };
+// }
+
+module.exports = config;
