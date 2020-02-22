@@ -4,8 +4,6 @@
 .gm-carousel-container {
     width: 100%;
     max-width: 100%;
-    // min-height: 400px;
-    // height: auto;
     overflow: hidden;
 
     > div {
@@ -19,7 +17,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        max-height: 100%;
 
         img{
             width: auto;
@@ -86,8 +83,6 @@
         height: 50px;
         padding: 0;
         background-color: #fff;
-        // border: 2px solid #ccc;
-        // box-shadow: 1px 1px 7px 2px #5d5b5b;
         z-index: 10;
 
         &:hover {

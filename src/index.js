@@ -30,3 +30,9 @@ registerBlockType("gm/carousel", {
   edit,
   save
 });
+
+// if (module.hot) {
+//   module.hot.accept(function() {
+//     console.log("Accepting the updated printMe module!");
+//   });
+// }
