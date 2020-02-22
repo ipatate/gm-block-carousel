@@ -114,11 +114,6 @@ const Edit = props => {
           onResizeStart={() => {
             toggleSelection(false);
           }}
-          onResize={debounce(50, (event, direction, elt, delta) => {
-            setAttributes({
-              height: parseInt(height + delta.height, 10)
-            });
-          })}
           onResizeStop={(event, direction, elt, delta) => {
             carousel.current.resizeHandler();
             setAttributes({
@@ -138,12 +133,7 @@ const Edit = props => {
               />
             ))}
           </div>
-          {isSelected && (
-            <div
-              style={{ top: `${height}px` }}
-              className="resizable-handle"
-            ></div>
-          )}
+          {isSelected && <div className="resizable-handle"></div>}
         </ResizableBox>
         {showArrow === true && blockKeys.length > 1 ? (
           <div className="gm-carousel-arrow-container">
@@ -186,3 +176,9 @@ const Edit = props => {
 };
 
 export default Edit;
+
+// onResize={debounce(50, (event, direction, elt, delta) => {
+//     setAttributes({
+//       height: parseInt(height + delta.height, 10)
+//     });
+//   })}
