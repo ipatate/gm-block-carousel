@@ -40,6 +40,14 @@ const Edit = props => {
         // init new carousel
         carousel.current = new Siema({
           selector: container.current,
+          onInit: () => {
+            // remove float
+            const items = container.current.querySelector("div:first-child")
+              .childNodes;
+            for (let a = 0; a < items.length; ++a) {
+              items[a].style.float = null;
+            }
+          },
           onChange: () => setSelected(carousel.current.currentSlide)
         });
 
@@ -59,6 +67,14 @@ const Edit = props => {
     // init first carousel
     carousel.current = new Siema({
       selector: container.current,
+      onInit: () => {
+        // remove float
+        const items = container.current.querySelector("div:first-child")
+          .childNodes;
+        for (let a = 0; a < items.length; ++a) {
+          items[a].style.float = null;
+        }
+      },
       onChange: () => {
         setSelected(carousel.current.currentSlide);
       }

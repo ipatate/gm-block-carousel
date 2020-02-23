@@ -60,6 +60,10 @@ const config = {
           "sass-loader"
         ]
       },
+      //   {
+      //     test: /\.svg$/,
+      //     use: ["@svgr/webpack"]
+      //   }
       {
         test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
         use: [

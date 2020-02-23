@@ -18,6 +18,11 @@ const initCarousel = () => {
           selector: car,
           onInit: () => {
             car.dataset.isInit = true;
+            // remove float
+            const items = car.querySelector("div:first-child").childNodes;
+            for (let a = 0; a < items.length; ++a) {
+              items[a].style.float = null;
+            }
             if (hasDot === "true") {
               dot[0].classList.add("gm-carousel-dot-current");
               const count = dot.length;
