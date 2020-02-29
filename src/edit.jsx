@@ -11,7 +11,8 @@ import Panel from "./components/panel";
 // model for bloc
 const model = {
   image: undefined,
-  imageId: undefined
+  imageId: undefined,
+  alt: ""
 };
 
 const Edit = props => {

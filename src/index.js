@@ -37,6 +37,5 @@ registerBlockType("gm/carousel", {
 
 // dev
 if (module.hot) {
-  console.log("hot");
   module.hot.accept(() => console.log("reload"));
 }

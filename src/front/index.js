@@ -23,7 +23,6 @@ const initCarousel = () => {
         const carousel = new Siema({
           selector: car,
           onInit: () => {
-            let isFocus = false;
             // set init to true
             car.dataset.isInit = true;
             // get first div items, not .gm-carousel-cell
@@ -59,9 +58,10 @@ const initCarousel = () => {
                 dot[i].addEventListener("click", () => {
                   carousel.goTo(i);
                 });
-                const f = (remove = false) => {
-                  if (isFocus === false) {
-                    document.addEventListener("keydown", e => {
+                const f = () => {
+                  // has no listener
+                  if (dot[i].dataset.hasKeyListener === undefined) {
+                    dot[i].addEventListener("keydown", e => {
                       // left arrow pressed
                       if (
                         e.keyCode === 37 &&
@@ -82,14 +82,11 @@ const initCarousel = () => {
                         dot[i + 1].focus();
                       }
                     });
-                    isFocus = true;
-                  }
-                  if (remove) {
-                    isFocus = false;
+                    // add data for not added new listener
+                    dot[i].dataset.hasKeyListener = true;
                   }
                 };
-                dot[i].addEventListener("focus", () => f());
-                dot[i].addEventListener("focusout", () => f(true));
+                dot[i].addEventListener("focus", f);
               }
             }
           },
