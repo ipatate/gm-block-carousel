@@ -176,21 +176,22 @@ const Edit = props => {
           </div>
         ) : null}
         {showDot === true && blockKeys.length > 1 ? (
-          <ul role="tablist" className="gm-carousel-dot-container">
+          <div role="tablist" className="gm-carousel-dot-container">
             {blockKeys.map((b, i) => {
               return (
-                <li
+                <button
+                  role="tab"
                   key={`dot-${b}`}
                   className={`gm-carousel-dot ${
                     +selected === +b ? "gm-carousel-dot-current" : ""
                   }`}
                   onClick={() => carousel.current.goTo(b)}
-                  role="tab"
-                  aria-label={`{__("image", "gm-carousel")} ${i + 1}`}
-                />
+                >
+                  <span>{`{__("image", "gm-carousel")} ${i + 1}`}</span>
+                </button>
               );
             })}
-          </ul>
+          </div>
         ) : null}
       </div>
       <div className="gm-carousel-add-bloc">

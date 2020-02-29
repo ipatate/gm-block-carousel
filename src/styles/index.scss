@@ -53,6 +53,11 @@
         user-select: none;
         transition: all .3s;
         list-style: none;
+
+        span {
+            position: absolute;
+            top: -30000px;
+        }
 }
 
 .gm-carousel-dot-current {

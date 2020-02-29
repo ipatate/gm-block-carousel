@@ -28,20 +28,21 @@ const Save = props => {
         </div>
       ) : null}
       {showDot === true && blockKeys.length > 1 ? (
-        <ul role="tablist" className="gm-carousel-dot-container">
+        <div role="tablist" className="gm-carousel-dot-container">
           {Object.keys(blocs).map((b, i) => {
             return (
-              <li
+              <button
                 role="tab"
                 tabindex="-1"
                 aria-selected="false"
-                aria-control={`${id}_${i}`}
+                aria-controls={`${id}_${i}`}
                 className="gm-carousel-dot"
-                aria-label={`{__("image", "gm-carousel")} ${i + 1}`}
-              />
+              >
+                <span>{`{__("image", "gm-carousel")} ${i + 1}`}</span>
+              </button>
             );
           })}
-        </ul>
+        </div>
       ) : null}
     </div>
   );
