@@ -8,8 +8,6 @@ import EditElement from "./components/editElement";
 import AddImage from "./components/addImage";
 import Panel from "./components/panel";
 
-import "./styles/index.scss";
-
 // model for bloc
 const model = {
   image: undefined,
@@ -17,13 +15,26 @@ const model = {
 };
 
 const Edit = props => {
-  const { attributes, setAttributes, toggleSelection, isSelected } = props;
+  const { attributes, setAttributes, toggleSelection, isSelected, id } = props;
   const { blocs, height, showDot, showArrow } = attributes;
   const [selected, setSelected] = useState(0);
   // container carousel
   const container = useRef();
   // ref to carousel
   let carousel = useRef();
+
+  useEffect(() => {
+    if (!id) {
+      const keyRand =
+        Math.random()
+          .toString(36)
+          .substring(2, 10) +
+        Math.random()
+          .toString(36)
+          .substring(2, 10);
+      setAttributes({ id: keyRand });
+    }
+  }, []);
 
   // destroy carousel on change element
   const destroyCarousel = (cb = () => true, resetDom = true) => {
@@ -165,19 +176,21 @@ const Edit = props => {
           </div>
         ) : null}
         {showDot === true && blockKeys.length > 1 ? (
-          <div className="gm-carousel-dot-container">
-            {blockKeys.map(b => {
+          <ul role="tablist" className="gm-carousel-dot-container">
+            {blockKeys.map((b, i) => {
               return (
-                <div
+                <li
                   key={`dot-${b}`}
                   className={`gm-carousel-dot ${
                     +selected === +b ? "gm-carousel-dot-current" : ""
                   }`}
                   onClick={() => carousel.current.goTo(b)}
-                ></div>
+                  role="tab"
+                  aria-label={`{__("image", "gm-carousel")} ${i + 1}`}
+                />
               );
             })}
-          </div>
+          </ul>
         ) : null}
       </div>
       <div className="gm-carousel-add-bloc">

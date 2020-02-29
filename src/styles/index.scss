@@ -36,20 +36,29 @@
     justify-content: center;
     padding: 0;
     margin: 20px 0 0 0;
-}
+    list-style: none;
+    }
 
-.gm-carousel-dot {
-    width: 14px;
-    height: 14px;
-    background-color: transparent;
-    border: 1px solid #666;
-    border-radius: 50%;
-    margin: .5rem;
-    cursor: pointer;
+    .gm-carousel-dot {
+        width: 14px;
+        height: 14px;
+        background-color: transparent;
+        border: 1px solid #666;
+        border-radius: 50%;
+        margin: .5rem;
+        cursor: pointer;
+        padding: 0;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        transition: all .3s;
+        list-style: none;
 }
 
 .gm-carousel-dot-current {
     background-color: #666;
+    width: 18px;
+    height: 18px;
 }
 
 .gm-carousel-arrow-container {
@@ -79,7 +88,7 @@
         border: 1px solid transparent;
         line-height: 1.5;
         border-radius: 100%;
-        transition: color .15s;
+        // transition: color .15s;
         text-decoration: none;
         cursor: pointer;
         width: 60px;
@@ -103,6 +112,7 @@
 
     }
     .gm-carousel-arrow-previous {
+        // background-color: red;
         &::after {
             content: '';
             display: flex;
@@ -126,6 +136,16 @@
             height: 24px;
             background: url('../svg/next-arrow.svg') no-repeat;
             background-size: contain;
+        }
+    }
+
+    .gm-arrow-disabled {
+        opacity: .2;
+
+        &:hover {
+            text-decoration: none;
+            box-shadow: none;
+            opacity: .2;
         }
     }
 }
