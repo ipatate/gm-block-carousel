@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Block GM Carousel\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-21 14:52+0000\n"
-"PO-Revision-Date: 2020-02-21 14:53+0000\n"
-"Last-Translator: admin <info@goodmotion.fr>\n"
+"PO-Revision-Date: 2020-02-29 17:27+0000\n"
+"Last-Translator: _isSuperAdmin <info@goodmotion.fr>\n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
@@ -20,7 +20,7 @@ msgstr "Ajouter une image"
 
 #. Name of the plugin
 msgid "Block GM Carousel"
-msgstr ""
+msgstr "Block GM Carousel"
 
 #. Description of the plugin
 msgid "Display carousel image"
@@ -28,11 +28,11 @@ msgstr "Affiche un carousel d'image"
 
 #. Author of the plugin
 msgid "Faramaz Pat <info@goodmotion.fr>"
-msgstr ""
+msgstr "Faramaz Pat <info@goodmotion.fr>"
 
 #: src/components/addImage.jsx:79
 msgid "Image"
-msgstr ""
+msgstr "Image"
 
 #: src/edit.jsx:156 src/save.jsx:21
 msgid "next"

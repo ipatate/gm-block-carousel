@@ -87,7 +87,7 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
                 title={__("add image", "gm-carousel")}
                 className="components-button editor-post-preview is-button is-default is-large"
               >
-                {__("add image !!", "gm-carousel")}
+                {__("add image", "gm-carousel")}
                 {"  "}
                 <Dashicon icon="plus-alt" />
               </Button>

@@ -12,7 +12,7 @@
 defined('ABSPATH') || exit;
 function isDevEnv()
 {
-    // return false;
+    return false;
     if (defined('WP_DEBUG') && WP_DEBUG === true) {
         return true;
     }
@@ -87,7 +87,7 @@ function init_carousel_block()
          * plugin_dir_path( MY_PLUGIN ) . 'languages' ) ). For details see
          * https://make.wordpress.org/core/2018/11/09/new-javascript-i18n-support-in-wordpress/
          */
-        wp_set_script_translations('gm/carousel', 'gm-carousel');
+        wp_set_script_translations('gm-carousel-js', 'gm-carousel', plugin_dir_path(__FILE__) . 'languages/');
     }
 }
 
@@ -106,9 +106,15 @@ function gm_carousel_frontend_scripts()
     }
 }
 
+// function gm_carousel_set_script_translations()
+// {
+//     wp_set_script_translations('gm-carousel-js', 'gm-carousel');
+// }
+
 // add script in front if block exist
 add_action('wp_enqueue_scripts', 'gm_carousel_frontend_scripts');
 
 // init block
 add_action('init', 'gm_carousel_load_textdomain');
 add_action('init', 'init_carousel_block');
+// add_action('init', 'gm_carousel_set_script_translations');
