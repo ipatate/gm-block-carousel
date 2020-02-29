@@ -60,6 +60,10 @@ const config = {
           "sass-loader"
         ]
       },
+      //   {
+      //     test: /\.svg$/,
+      //     use: ["@svgr/webpack"]
+      //   }
       {
         test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
         use: [
@@ -118,11 +122,24 @@ const config = {
   ]
 };
 
-// if (dev) {
-//   config.devServer = {
-//     // contentBase: path.join(__dirname, "dist"),
-//     hot: true
-//   };
-// }
+if (dev) {
+  config.output.publicPath = "http://localhost:8080/";
+  config.devServer = {
+    contentBase: path.join(__dirname, "dist"),
+    hot: true,
+    inline: true,
+    quiet: true,
+    overlay: true,
+    historyApiFallback: true,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    stats: {
+      colors: true
+    },
+    // public: "http://localhost:8080/",
+    // host: "localhost",
+    // port: 8080,
+    disableHostCheck: true
+  };
+}
 
 module.exports = config;

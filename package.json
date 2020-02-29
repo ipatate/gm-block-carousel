@@ -1,6 +1,6 @@
 {
-  "name": "gm-block-map",
-  "version": "0.0.1",
+  "name": "gm-block-carousel",
+  "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -26,7 +26,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "start:server": "./node_modules/.bin/webpack-dev-server",
+    "start:server": "./node_modules/.bin/webpack-dev-server --hot",
     "start": "./node_modules/.bin/webpack --watch",
     "watch": "./node_modules/.bin/webpack --watch",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack"

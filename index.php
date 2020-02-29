@@ -10,6 +10,14 @@
  **/
 
 defined('ABSPATH') || exit;
+function isDevEnv()
+{
+    // return false;
+    if (defined('WP_DEBUG') && WP_DEBUG === true) {
+        return true;
+    }
+    return false;
+}
 /**
  * Load all translations for our plugin from the MO file.
  */
@@ -28,7 +36,8 @@ function init_carousel_block()
     // script for admin
     wp_register_script(
         'gm-carousel-js',
-        plugins_url('dist/main.js', __FILE__),
+        !isDevEnv() ? plugins_url('dist/main.js', __FILE__) :
+            'http://localhost:8080/main.js',
         [
             'wp-element',
             'wp-block-editor',
@@ -47,7 +56,8 @@ function init_carousel_block()
     // style for admin editor
     wp_register_style(
         'gm-carousel-editor-css',
-        plugins_url('dist/editor.css', __FILE__),
+        !isDevEnv() ? plugins_url('dist/editor.css', __FILE__) :
+            'http://localhost:8080/editor.css',
         [],
         null
     );
@@ -55,7 +65,8 @@ function init_carousel_block()
     // style for front
     wp_register_style(
         'gm-carousel-public-css',
-        plugins_url('dist/styles.css', __FILE__),
+        !isDevEnv() ? plugins_url('dist/styles.css', __FILE__) :
+            'http://localhost:8080/styles.css',
         [],
         null
     );
@@ -87,9 +98,10 @@ function gm_carousel_frontend_scripts()
     if (has_block('gm/carousel')) {
         wp_enqueue_script(
             'gm-carousel-front',
-            plugins_url('dist/gm-carousel.js', __FILE__),
+            !isDevEnv() ? plugins_url('dist/gm-carousel.js', __FILE__) :
+                'http://localhost:8080/gm-carousel.js',
             null,
-            filemtime(plugin_dir_path(__FILE__) . 'dist/gm-carousel.js')
+            !isDevEnv() ? filemtime(plugin_dir_path(__FILE__) . 'dist/gm-carousel.js') : null
         );
     }
 }

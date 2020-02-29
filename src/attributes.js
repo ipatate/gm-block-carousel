@@ -14,5 +14,8 @@ export default {
   showArrow: {
     type: Boolean,
     default: true
+  },
+  id: {
+    type: String
   }
 };

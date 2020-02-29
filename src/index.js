@@ -1,9 +1,13 @@
 const { registerBlockType } = wp.blocks;
-const { __ } = wp.i18n;
+const { __, setLocaleData } = wp.i18n;
 
 import edit from "./edit";
 import save from "./save";
 import attributes from "./attributes";
+
+import "./styles/index.scss";
+
+// setLocaleData({ "": {} }, "gm-carousel");
 
 const icone = () => (
   <>
@@ -31,8 +35,7 @@ registerBlockType("gm/carousel", {
   save
 });
 
-// if (module.hot) {
-//   module.hot.accept(function() {
-//     console.log("Accepting the updated printMe module!");
-//   });
-// }
+// dev
+if (module.hot) {
+  module.hot.accept(() => console.log("reload"));
+}
