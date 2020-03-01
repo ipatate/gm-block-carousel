@@ -38,7 +38,7 @@ const Save = props => {
                 aria-controls={`${id}_${i}`}
                 className="gm-carousel-dot"
               >
-                <span>{`{__("image", "gm-carousel")} ${i + 1}`}</span>
+                <span>{`${__("image", "gm-carousel")} ${i + 1}`}</span>
               </button>
             );
           })}

@@ -1,0 +1,26 @@
+{
+  "translation-revision-date": "2020-03-01 08:44+0000",
+  "generator": "WP-CLI/2.4.0",
+  "source": "src/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "fr_FR",
+        "plural-forms": "nplurals=2; plural=n > 1;"
+      },
+      "Block carousel": ["Bloc carrousel"],
+      "carousel for show photos": ["carrousel pour afficher des photos"],
+      "Display carousel image": ["Affiche un carrousel d’image"],
+      "next": ["suivant"],
+      "previous": ["précédent"],
+      "add image": ["ajouter une image"],
+      "remove": ["supprimer"],
+      "Image description": ["Description de l’image (obligatoire)"],
+      "Settings": ["Réglages"],
+      "Show Dot": ["Afficher les dots"],
+      "Show Arrow": ["Afficher les flèches"]
+    }
+  }
+}

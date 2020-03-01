@@ -1,10 +1,11 @@
 {
   "name": "gm-block-carousel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@svgr/webpack": "^5.1.0",
+    "@wordpress/babel-plugin-makepot": "^3.4.0",
     "@wordpress/babel-preset-default": "^4.7.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^2.1.0",
     "autoprefixer": "^9.7.3",
@@ -29,13 +30,22 @@
     "start:server": "./node_modules/.bin/webpack-dev-server --hot",
     "start": "./node_modules/.bin/webpack --watch",
     "watch": "./node_modules/.bin/webpack --watch",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack"
+    "build:js": "NODE_ENV=production ./node_modules/.bin/webpack",
+    "build:pot": "wp i18n make-pot --merge=languages/gm-carousel-js.pot --skip-js . languages/gm-carousel.pot",
+    "build:json": "wp i18n make-json languages --pretty-print --no-purge"
   },
   "babel": {
     "presets": [
       "@wordpress/default"
     ],
-    "plugins": []
+    "plugins": [
+      [
+        "@wordpress/babel-plugin-makepot",
+        {
+          "output": "languages/gm-carousel-js.pot"
+        }
+      ]
+    ]
   },
   "dependencies": {
     "re-resizable": "^6.2.0",
