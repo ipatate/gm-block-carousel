@@ -3,11 +3,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/components/addImage.jsx:79
+#: src/components/addImage.jsx:86
 msgid "Image"
 msgstr ""
 
-#: src/components/addImage.jsx:90
+#: src/components/addImage.jsx:97
 msgid "add image"
 msgstr ""
 

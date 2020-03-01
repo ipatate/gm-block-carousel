@@ -34,9 +34,13 @@ const config = {
   entry: {
     main: "./src/index.js",
     "gm-carousel": "./src/front/index.js",
+    "gm-carousel-siema": "./src/front/siema.min.js",
     editor: "./src/styles/editor.scss",
     styles: "./src/styles/index.scss"
   },
+  //   externals: {
+  //     siema: "siema"
+  //   },
   module: {
     rules: [
       {

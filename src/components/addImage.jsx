@@ -42,7 +42,14 @@ const AddImage = ({ props, initCarousel, destroyCarousel }) => {
         setAttributes({
           blocs: {
             ...blocs,
-            ...{ [_index]: { ...blocs[_index], image, newImage: false } }
+            ...{
+              [_index]: {
+                ...blocs[_index],
+                image,
+                alt: image.alt_text,
+                newImage: false
+              }
+            }
           }
         });
       }

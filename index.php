@@ -10,7 +10,12 @@
  * Text Domain: gm-carousel
  **/
 
+namespace Goodmotion\Gutenberg\Blocks\Carousel;
+
+
 defined('ABSPATH') || exit;
+
+/** define env */
 function isDevEnv()
 {
     return false;
@@ -22,12 +27,15 @@ function isDevEnv()
 /**
  * Load all translations for our plugin from the MO file.
  */
-function gm_carousel_load_textdomain()
+function load_textdomain()
 {
     load_plugin_textdomain('gm-carousel', false, plugin_dir_path(__FILE__) . 'languages');
 }
 
-function init_carousel_block()
+/**
+ * init the block
+ */
+function register_block()
 {
     if (!function_exists('register_block_type')) {
         // Gutenberg is not active.
@@ -36,7 +44,7 @@ function init_carousel_block()
 
     // script for admin
     wp_register_script(
-        'gm-carousel-js',
+        'gm-carousel-editor',
         !isDevEnv() ? plugins_url('dist/main.js', __FILE__) :
             'http://localhost:8080/main.js',
         [
@@ -56,7 +64,7 @@ function init_carousel_block()
 
     // style for admin editor
     wp_register_style(
-        'gm-carousel-editor-css',
+        'gm-carousel-editor',
         !isDevEnv() ? plugins_url('dist/editor.css', __FILE__) :
             'http://localhost:8080/editor.css',
         [],
@@ -65,7 +73,7 @@ function init_carousel_block()
 
     // style for front
     wp_register_style(
-        'gm-carousel-public-css',
+        'gm-carousel',
         !isDevEnv() ? plugins_url('dist/styles.css', __FILE__) :
             'http://localhost:8080/styles.css',
         [],
@@ -76,27 +84,27 @@ function init_carousel_block()
     register_block_type(
         'gm/carousel',
         [
-            'editor_script' => 'gm-carousel-js',
-            'editor_style'  => 'gm-carousel-editor-css',
-            'style'  => 'gm-carousel-public-css',
+            'editor_script' => 'gm-carousel-editor',
+            'editor_style'  => 'gm-carousel-editor',
+            'style'  => 'gm-carousel',
         ]
     );
-
-    // if (function_exists('wp_set_script_translations')) {
-    //     /**
-    //      * May be extended to wp_set_script_translations( 'my-handle', 'my-domain',
-    //      * plugin_dir_path( MY_PLUGIN ) . 'languages' ) ). For details see
-    //      * https://make.wordpress.org/core/2018/11/09/new-javascript-i18n-support-in-wordpress/
-    //      */
-    //     wp_set_script_translations('gm-carousel-js', 'gm-carousel', plugin_dir_path(__FILE__) . 'languages');
-    // }
 }
 
 
-// add js script on front
-function gm_carousel_frontend_scripts()
+/**
+ * add js script on front
+ */
+function frontend_scripts()
 {
     if (has_block('gm/carousel')) {
+        // if (isDevEnv() === false) {
+        // wp_enqueue_script(
+        //     'gm-carousel-siema',
+        //     plugins_url('dist/gm-carousel-siema.js', __FILE__),
+        //     filemtime(plugin_dir_path(__FILE__) . 'dist/gm-carousel-siema.js')
+        // );
+        // }
         wp_enqueue_script(
             'gm-carousel-front',
             !isDevEnv() ? plugins_url('dist/gm-carousel.js', __FILE__) :
@@ -107,15 +115,18 @@ function gm_carousel_frontend_scripts()
     }
 }
 
-function gm_carousel_set_script_translations()
+/**
+ * load translations
+ */
+function set_script_translations()
 {
-    wp_set_script_translations('gm-carousel-js', 'gm-carousel', plugin_dir_path(__FILE__) . 'languages');
+    wp_set_script_translations('gm-carousel-editor', 'gm-carousel', plugin_dir_path(__FILE__) . 'languages');
 }
 
 // add script in front if block exist
-add_action('wp_enqueue_scripts', 'gm_carousel_frontend_scripts');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\frontend_scripts');
 
 // init block
-add_action('init', 'gm_carousel_load_textdomain');
-add_action('init', 'init_carousel_block');
-add_action('init', 'gm_carousel_set_script_translations');
+add_action('init', __NAMESPACE__ . '\register_block');
+add_action('init', __NAMESPACE__ . '\load_textdomain');
+add_action('init', __NAMESPACE__ . '\set_script_translations');
