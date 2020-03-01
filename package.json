@@ -1,6 +1,6 @@
 {
   "name": "gm-block-carousel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
