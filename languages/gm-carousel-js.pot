@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/components/addImage.jsx:79
+msgid "Image"
+msgstr ""
+
+#: src/components/addImage.jsx:90
+msgid "add image"
+msgstr ""
+
+#: src/components/editElement.jsx:19
+msgid "remove"
+msgstr ""
+
+#: src/components/editElement.jsx:25
+msgid "Image description"
+msgstr ""
+
+#: src/components/panel.jsx:10
+msgid "Settings"
+msgstr ""
+
+#: src/components/panel.jsx:12
+msgid "Show Dot"
+msgstr ""
+
+#: src/components/panel.jsx:17
+msgid "Show Arrow"
+msgstr ""
+
+#: src/edit.jsx:172
+#: src/save.jsx:23
+msgid "previous"
+msgstr ""
+
+#: src/edit.jsx:175
+#: src/save.jsx:26
+msgid "next"
+msgstr ""
+
+#: src/index.js:29
+msgid "Block carousel"
+msgstr ""
+
+#: src/index.js:30
+msgid "carousel for show photos"
+msgstr ""
+
+#: src/save.jsx:41
+msgid "image"
+msgstr ""
