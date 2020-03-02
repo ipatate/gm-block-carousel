@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 import SaveElement from "./components/saveElement";
 
 const Save = props => {
-  const { blocs, showArrow, showDot, id } = props.attributes;
+  const { blocs, showArrow, showDot, id, height } = props.attributes;
   const blockKeys = Object.keys(blocs);
 
   return (
@@ -12,7 +12,7 @@ const Save = props => {
       data-dot={showDot}
       data-arrow={showArrow}
     >
-      <div className="gm-carousel-container">
+      <div className={`gm-carousel-container carousel_${id}`}>
         {Object.keys(blocs).map(b => (
           <SaveElement props={props} keyRand={id} key={b} index={b} />
         ))}
@@ -44,6 +44,15 @@ const Save = props => {
           })}
         </div>
       ) : null}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+    .carousel_${id} .gm-carousel-cell {
+      max-height: ${height}px;
+      }
+`
+        }}
+      ></style>
     </div>
   );
 };

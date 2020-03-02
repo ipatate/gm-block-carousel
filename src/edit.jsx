@@ -120,7 +120,7 @@ const Edit = props => {
   return (
     <div className="gm-carousel-bloc-edit">
       <Panel props={props} />
-      <div className="gm-carousel-bloc-container">
+      <div className={`gm-carousel-bloc-container carousel_${id}`}>
         <ResizableBox
           size={{
             width: "100%",
@@ -150,10 +150,13 @@ const Edit = props => {
             toggleSelection(true);
           }}
         >
-          <div className="gm-carousel-container" ref={container}>
+          <div
+            className="gm-carousel-container"
+            style={{ maxHeight: `${height}px` }}
+            ref={container}
+          >
             {blockKeys.map(b => (
               <EditElement
-                height={`${height}px`}
                 onRemoveImage={onRemoveImage}
                 props={props}
                 key={`${blocs[b].imageId} ${b}`}
@@ -202,6 +205,15 @@ const Edit = props => {
           props={props}
         />
       </div>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .carousel_${id} .gm-carousel-cell {
+      max-height: ${height}px;
+      }
+`
+        }}
+      ></style>
     </div>
   );
 };

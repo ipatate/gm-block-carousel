@@ -4,16 +4,21 @@ const { __ } = wp.i18n;
 
 import "../styles/index.scss";
 
-const EditElement = ({ props, index, height, onRemoveImage }) => {
+const EditElement = ({ props, index, onRemoveImage }) => {
   const { attributes, setAttributes } = props;
   const { blocs } = attributes;
   const { imageId, image, alt } = blocs[index];
+  const { media_details } = image;
+  const format =
+    media_details.width < media_details.height
+      ? "gm-format-portrait"
+      : "gm-format-paysage";
   return (
     <div className="gm-carousel-cell">
       {!!imageId && !image && <Spinner />}
       {imageId && image ? (
         <>
-          <img src={image.source_url} alt="" style={{ maxHeight: height }} />
+          <img src={image.source_url} alt="" className={format} />
           <Button
             onClick={() => onRemoveImage(index)}
             title={__("remove", "gm-carousel")}

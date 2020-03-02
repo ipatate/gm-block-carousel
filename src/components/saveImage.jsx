@@ -9,11 +9,14 @@ const SaveImage = ({ props, index }) => {
   const { sizes } = media_details;
   const { large, full } = sizes;
   const pic = large || full;
+  const format =
+    pic.width < pic.height ? "gm-format-portrait" : "gm-format-paysage";
   return (
     <>
       <img
+        className={format}
         src={pic ? pic.source_url : source_url}
-        style={{ maxHeight: height }}
+        // style={{ maxHeight: height }}
         alt={alt || alt_text || title.raw}
       />
     </>
