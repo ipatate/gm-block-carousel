@@ -1,6 +1,6 @@
 # Block Gutenberg wordpress for display Carousel Image.
 
-# Beta version
+# Beta version !!
 
 Show carousel with dot and arrows.
 The carousel in front is accessible. It use aria attributes and navigation with key.
@@ -20,11 +20,11 @@ yarn start
 ### For build
 
 ```bash
-npm run build
+npm run build:js
 ```
 
 ```bash
-yarn build
+yarn build:js
 ```
 
 ## Libraries used
