@@ -32,6 +32,7 @@ const config = {
     "gm-carousel": "./src/front/index.js",
     "gm-carousel-siema": "./src/front/siema.min.js"
   },
+  output: {},
   // for externalize siema script
   //   externals: {
   //     siema: "siema"

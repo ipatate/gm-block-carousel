@@ -63,24 +63,26 @@ const initCarousel = () => {
                   // has no listener
                   if (dot[i].dataset.hasKeyListener === undefined) {
                     dot[i].addEventListener("keydown", e => {
-                      // left arrow pressed
+                      // left ou up arrow pressed
                       if (
-                        e.keyCode === 37 &&
+                        (e.keyCode === 37 || e.keyCode === 38) &&
                         i !== 0 &&
                         dot[i - 1] !== undefined
                       ) {
                         dot[i].setAttribute("tabindex", -1);
                         dot[i - 1].setAttribute("tabindex", 0);
                         dot[i - 1].focus();
+                        e.preventDefault();
                       } else if (
-                        // right arrow pressed
-                        e.keyCode === 39 &&
+                        // right or down arrow pressed
+                        (e.keyCode === 39 || e.keyCode === 40) &&
                         i !== count &&
                         dot[i + 1] !== undefined
                       ) {
                         dot[i].setAttribute("tabindex", -1);
                         dot[i + 1].setAttribute("tabindex", 0);
                         dot[i + 1].focus();
+                        e.preventDefault();
                       }
                     });
                     // add data for not added new listener
