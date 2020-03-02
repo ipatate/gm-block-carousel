@@ -62,6 +62,7 @@ function register_block()
         true
     );
 
+    // injected only in prod
     if (!isDevEnv()) {
         // style for admin editor
         wp_register_style(
@@ -73,6 +74,7 @@ function register_block()
         );
     }
 
+    // injected only in prod
     if (!isDevEnv()) {
         // style for front
         wp_register_style(
@@ -89,7 +91,9 @@ function register_block()
         'gm/carousel',
         [
             'editor_script' => 'gm-carousel-editor',
+            // injected only in prod
             'editor_style'  => !isDevEnv() ? 'gm-carousel-editor' : null,
+            // injected only in prod
             'style'  => !isDevEnv() ? 'gm-carousel' : null,
         ]
     );

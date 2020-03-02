@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 import SaveElement from "./components/saveElement";
 
 const Save = props => {
-  const { blocs, showArrow, showDot, id } = props.attributes;
+  const { blocs, showArrow, showDot, id, height } = props.attributes;
   const blockKeys = Object.keys(blocs);
 
   return (
@@ -44,6 +44,15 @@ const Save = props => {
           })}
         </div>
       ) : null}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+      .gm-carousel-cell {
+      max-height: ${height}px;
+      }
+`
+        }}
+      ></style>
     </div>
   );
 };

@@ -16,15 +16,27 @@
         position: relative;
         display: flex;
         justify-content: center;
-        align-items: center;
-        // height: 0;
-        // padding-top: 56.25%;
-        // object-fit: contain;
+        align-items: stretch;
+        overflow: hidden;
+
+        @media (max-width: 500px) {
+          max-height: 250px;
+        }
 
         img{
             width: auto;
             height: auto;
+        }
+
+        .gm-format-paysage {
+            // width: 100%;
+            max-width: 100%;
+        }
+        .gm-format-portrait {
+            width: auto;
+            height: auto;
             max-height: 100%;
+            object-fit: contain;
         }
     }
 }
