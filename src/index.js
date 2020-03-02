@@ -6,6 +6,7 @@ import save from "./save";
 import attributes from "./attributes";
 
 import "./styles/index.scss";
+import "./styles/editor.scss";
 
 // setLocaleData({ "": {} }, "gm-carousel");
 

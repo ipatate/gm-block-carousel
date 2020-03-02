@@ -41,11 +41,11 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: src/index.js:29
+#: src/index.js:30
 msgid "Block carousel"
 msgstr ""
 
-#: src/index.js:30
+#: src/index.js:31
 msgid "carousel for show photos"
 msgstr ""
 

@@ -27,17 +27,12 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx", ".scss", ".css"]
   },
-  output: {
-    // path: path.resolve(__dirname, "/dist"),
-    // publicPath: path.resolve(__dirname, "/dist")
-  },
   entry: {
     main: "./src/index.js",
     "gm-carousel": "./src/front/index.js",
-    "gm-carousel-siema": "./src/front/siema.min.js",
-    editor: "./src/styles/editor.scss",
-    styles: "./src/styles/index.scss"
+    "gm-carousel-siema": "./src/front/siema.min.js"
   },
+  // for externalize siema script
   //   externals: {
   //     siema: "siema"
   //   },
@@ -57,7 +52,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: dev ? "style-loader" : MiniCssExtractPlugin.loader
           },
           "css-loader",
           "postcss-loader",
@@ -79,30 +74,33 @@ const config = {
   },
   // for create 2 css files
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    splitChunks: {
-      cacheGroups: {
-        editor: {
-          name: "editor",
-          test: (m, c, entry = "editor") =>
-            m.constructor.name === "CssModule" && recursiveIssuer(m) === entry,
-          chunks: "all",
-          enforce: true
-        },
-        styles: {
-          name: "styles",
-          test: (m, c, entry = "styles") =>
-            m.constructor.name === "CssModule" && recursiveIssuer(m) === entry,
-          chunks: "all",
-          enforce: true
+    minimizer: dev
+      ? []
+      : [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    splitChunks: dev
+      ? {}
+      : {
+          cacheGroups: {
+            editor: {
+              name: "editor",
+              test: (m, c, entry = "editor") =>
+                m.constructor.name === "CssModule" &&
+                recursiveIssuer(m) === entry,
+              chunks: "all",
+              enforce: true
+            },
+            styles: {
+              name: "styles",
+              test: (m, c, entry = "styles") =>
+                m.constructor.name === "CssModule" &&
+                recursiveIssuer(m) === entry,
+              chunks: "all",
+              enforce: true
+            }
+          }
         }
-      }
-    }
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css"
-    }),
     {
       // remove unecessary js files
       apply(compiler) {
@@ -126,13 +124,23 @@ const config = {
   ]
 };
 
+if (!dev) {
+  config.entry.editor = "./src/styles/editor.scss";
+  config.entry.styles = "./src/styles/index.scss";
+  config.plugins.push(
+    new MiniCssExtractPlugin({
+      filename: "[name].css"
+    })
+  );
+}
+
 if (dev) {
   config.output.publicPath = "http://localhost:8080/";
   config.devServer = {
     contentBase: path.join(__dirname, "dist"),
     hot: true,
     inline: true,
-    quiet: true,
+    // quiet: true,
     overlay: true,
     historyApiFallback: true,
     headers: { "Access-Control-Allow-Origin": "*" },

@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
 /** define env */
 function isDevEnv()
 {
-    return false;
+    // return false;
     if (defined('WP_DEBUG') && WP_DEBUG === true) {
         return true;
     }
@@ -62,31 +62,35 @@ function register_block()
         true
     );
 
-    // style for admin editor
-    wp_register_style(
-        'gm-carousel-editor',
-        !isDevEnv() ? plugins_url('dist/editor.css', __FILE__) :
-            'http://localhost:8080/editor.css',
-        [],
-        null
-    );
+    if (!isDevEnv()) {
+        // style for admin editor
+        wp_register_style(
+            'gm-carousel-editor',
+            !isDevEnv() ? plugins_url('dist/editor.css', __FILE__) :
+                'http://localhost:8080/editor.css',
+            [],
+            null
+        );
+    }
 
-    // style for front
-    wp_register_style(
-        'gm-carousel',
-        !isDevEnv() ? plugins_url('dist/styles.css', __FILE__) :
-            'http://localhost:8080/styles.css',
-        [],
-        null
-    );
+    if (!isDevEnv()) {
+        // style for front
+        wp_register_style(
+            'gm-carousel',
+            !isDevEnv() ? plugins_url('dist/styles.css', __FILE__) :
+                'http://localhost:8080/styles.css',
+            [],
+            null
+        );
+    }
 
     // create block
     register_block_type(
         'gm/carousel',
         [
             'editor_script' => 'gm-carousel-editor',
-            'editor_style'  => 'gm-carousel-editor',
-            'style'  => 'gm-carousel',
+            'editor_style'  => !isDevEnv() ? 'gm-carousel-editor' : null,
+            'style'  => !isDevEnv() ? 'gm-carousel' : null,
         ]
     );
 }
@@ -98,6 +102,7 @@ function register_block()
 function frontend_scripts()
 {
     if (has_block('gm/carousel')) {
+        // for externalize siema script
         // if (isDevEnv() === false) {
         // wp_enqueue_script(
         //     'gm-carousel-siema',

@@ -1,4 +1,5 @@
 import Siema from "siema";
+import "../styles/index";
 
 const initCarousel = () => {
   const c_car = document.querySelectorAll(".gm-carousel-bloc-container");
