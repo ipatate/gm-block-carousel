@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
 /** define env */
 function isDevEnv()
 {
-    // return false;
+    return false;
     if (defined('WP_DEBUG') && WP_DEBUG === true) {
         return true;
     }

@@ -72,7 +72,6 @@ const initCarousel = () => {
                         dot[i].setAttribute("tabindex", -1);
                         dot[i - 1].setAttribute("tabindex", 0);
                         dot[i - 1].focus();
-                        e.preventDefault();
                       } else if (
                         // right or down arrow pressed
                         (e.keyCode === 39 || e.keyCode === 40) &&
@@ -82,6 +81,13 @@ const initCarousel = () => {
                         dot[i].setAttribute("tabindex", -1);
                         dot[i + 1].setAttribute("tabindex", 0);
                         dot[i + 1].focus();
+                      }
+                      if (
+                        e.keyCode === 37 ||
+                        e.keyCode === 38 ||
+                        e.keyCode === 39 ||
+                        e.keyCode === 40
+                      ) {
                         e.preventDefault();
                       }
                     });

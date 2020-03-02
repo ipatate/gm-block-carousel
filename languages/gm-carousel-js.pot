@@ -11,11 +11,11 @@ msgstr ""
 msgid "add image"
 msgstr ""
 
-#: src/components/editElement.jsx:19
+#: src/components/editElement.jsx:24
 msgid "remove"
 msgstr ""
 
-#: src/components/editElement.jsx:25
+#: src/components/editElement.jsx:30
 msgid "Image description"
 msgstr ""
 
@@ -31,12 +31,12 @@ msgstr ""
 msgid "Show Arrow"
 msgstr ""
 
-#: src/edit.jsx:172
+#: src/edit.jsx:175
 #: src/save.jsx:23
 msgid "previous"
 msgstr ""
 
-#: src/edit.jsx:175
+#: src/edit.jsx:178
 #: src/save.jsx:26
 msgid "next"
 msgstr ""

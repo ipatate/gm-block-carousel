@@ -12,7 +12,7 @@ const Save = props => {
       data-dot={showDot}
       data-arrow={showArrow}
     >
-      <div className="gm-carousel-container">
+      <div className={`gm-carousel-container carousel_${id}`}>
         {Object.keys(blocs).map(b => (
           <SaveElement props={props} keyRand={id} key={b} index={b} />
         ))}
@@ -47,7 +47,7 @@ const Save = props => {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-      .gm-carousel-cell {
+    .carousel_${id} .gm-carousel-cell {
       max-height: ${height}px;
       }
 `
