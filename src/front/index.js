@@ -103,6 +103,7 @@ const initCarousel = () => {
             const countCell = cell.length;
             // all cell with aria-hidden true
             for (let i = 0; i < countCell; ++i) {
+              cell[i].style.float = null;
               cell[i].setAttribute("aria-hidden", true);
             }
             // aria-hidden false for current

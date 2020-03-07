@@ -11,9 +11,12 @@ const SaveImage = ({ props, index }) => {
   const pic = large || full;
   const format =
     pic.width < pic.height ? "gm-format-portrait" : "gm-format-paysage";
+  const style =
+    format === "gm-format-portrait" ? { maxHeight: `${height}px` } : null;
   return (
     <>
       <img
+        style={style}
         className={format}
         src={pic ? pic.source_url : source_url}
         // style={{ maxHeight: height }}
